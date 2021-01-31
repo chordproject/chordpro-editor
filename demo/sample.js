@@ -1,4 +1,4 @@
-import { Main } from '../src/main';
+//import { Main } from '../src/main';
 
 'use strict';
 
@@ -35,12 +35,15 @@ var chordSheet = `
     
     `.substring(1);
 
-Main.init();
-Main.run(chordSheet);
+ChordProjectEditor.Main.init();
+ChordProjectEditor.Main.run(chordSheet);
 
-var _editor = Main.getEditor();
-_editor.on('change', () => updateContent());
+// Main.init();
+// Main.run(chordSheet);
 
-var  updateContent = () => {
-   //alert("update event :)");
-};
+// var _editor = Main.getEditor();
+// _editor.on('change', () => updateContent());
+
+// var  updateContent = () => {
+//    //alert("update event :)");
+// };
