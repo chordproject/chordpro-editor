@@ -1,5 +1,3 @@
-import * as ace from 'ace-builds';
-
 ace.define(
 	'ace/theme/cobalt',
 	['require', 'exports', 'module', 'ace/lib/dom'],
@@ -8,15 +6,15 @@ ace.define(
 		exports.cssClass = 'ace-cobalt';
 		exports.cssText =
 			'.ace-cobalt .ace_gutter {\
-    background: #011e3a;\
+    background: #222b45;\
     color: rgb(128,145,160)\
     }\
     .ace-cobalt .ace_print-margin {\
     width: 1px;\
-    background: #555555\
+    background: #222b45\
     }\
     .ace-cobalt {\
-    background-color: #002240;\
+    background-color: #222b45;\
     color: #FFFFFF\
     }\
     .ace-cobalt .ace_cursor {\
@@ -26,7 +24,7 @@ ace.define(
     background: rgba(179, 101, 57, 0.75)\
     }\
     .ace-cobalt.ace_multiselect .ace_selection.ace_start {\
-    box-shadow: 0 0 3px 0px #002240;\
+    box-shadow: 0 0 3px 0px #222b45;\
     }\
     .ace-cobalt .ace_marker-layer .ace_step {\
     background: rgb(127, 111, 19)\
@@ -36,10 +34,10 @@ ace.define(
     border: 1px solid rgba(255, 255, 255, 0.15)\
     }\
     .ace-cobalt .ace_marker-layer .ace_active-line {\
-    background: rgba(0, 0, 0, 0.35)\
+    background: rgba(21, 26, 48, 1)\
     }\
     .ace-cobalt .ace_gutter-active-line {\
-    background-color: rgba(0, 0, 0, 0.35)\
+    background-color: rgba(21, 26, 48, 1)\
     }\
     .ace-cobalt .ace_marker-layer .ace_selected-word {\
     border: 1px solid rgba(179, 101, 57, 0.75)\

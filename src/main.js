@@ -3,8 +3,9 @@ import { Settings } from './settings';
 import './mode-chordpro';
 import './snippets-chordpro';
 import './theme-cobalt';
+import './theme-clouds';
 import 'ace-builds/src-noconflict/snippets/text';
-//import * as langTools from 'ace-builds/src-noconflict/ext-language_tools';
+//import * as defaultTheme from 'ace-builds/src-noconflict/theme-textmate';
 import * as langTools from './ext-language_tools';
 
 /**
@@ -39,9 +40,15 @@ export const Main = (() => {
 		_editor = ace.edit(Settings.ids.editor);
 		_editor.setOptions(Settings.opts);
 		_editor.session.setMode('ace/mode/chordpro');
-		_editor.setTheme('ace/theme/cobalt');
-
 		langTools.setCompleters([_completer]);
+	};
+
+	_public.doSetTheme = (value) => {
+		if (value === 'dark') {
+			_editor.setTheme('ace/theme/cobalt');
+		} else {
+			_editor.setTheme('ace/theme/clouds');
+		}
 	};
 
 	/**
