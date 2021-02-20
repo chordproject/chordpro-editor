@@ -8,8 +8,8 @@ module.exports = merge(common, {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'ChordProjectEditor',
-			filename: './demo/index.html',
+			filename: 'index.html',
+			template: './demo/index.html',
 		}),
 	],
 	mode: 'development',

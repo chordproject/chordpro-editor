@@ -1,6 +1,6 @@
 {
 	"name": "chordproject-editor",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"main": "dist/chordproject-editor.bundle.js",
 	"description": "A JavaScript library for editing ChordPro songs.",
 	"engines": {
@@ -16,8 +16,8 @@
 	"author": "Jaime Mora (http://chordproject.com)",
 	"scripts": {
 		"start": "webpack serve --config webpack.dev.js",
-		"build": "webpack --config webpack.prod.js && copy C:\\D\\Jaime\\ChordProject\\editor\\dist\\chordproject-editor.bundle.js C:\\D\\Jaime\\ChordProject\\frontend-client\\node_modules\\chordproject-editor\\dist /b/v/y",
-		"publish": "npm publish"
+		"build": "webpack --config webpack.prod.js",
+		"publish": "npm build && npm publish"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.12.10",

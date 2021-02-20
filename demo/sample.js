@@ -1,6 +1,6 @@
-//import { Main } from '../src/main';
+import { Main } from '../src/main';
 
-'use strict';
+('use strict');
 
 var chordSheet = `
     {title: Praise Adonai}
@@ -35,11 +35,11 @@ var chordSheet = `
     
     `.substring(1);
 
-ChordProjectEditor.Main.init();
-ChordProjectEditor.Main.run(chordSheet);
+// ChordProjectEditor.Main.init();
+// ChordProjectEditor.Main.run(chordSheet);
 
-// Main.init();
-// Main.run(chordSheet);
+Main.init();
+Main.run(chordSheet);
 
 // var _editor = Main.getEditor();
 // _editor.on('change', () => updateContent());

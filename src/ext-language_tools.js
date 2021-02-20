@@ -1811,7 +1811,8 @@ ace.define(
 
 						if (this.exactMatch) this.completions.exactMatch = true;
 
-						this.completions.setFilter(prefix);
+						//JRM: It allows open the popup without prefix
+						//this.completions.setFilter(prefix);
 						var filtered = this.completions.filtered;
 						if (!filtered.length) return detachIfFinished();
 						if (

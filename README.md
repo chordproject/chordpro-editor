@@ -40,7 +40,7 @@ $ npm i
 $ npm run start
 ```
 
-It should open a browser and navigate to http://localhost:8080/ showing a song example.
+Open a browser and navigate to http://localhost:8080/ to load a song example.
 
 4.  Make changes (e.g. Change the options in src/main.js)
 5.  Changes are deployed on browser directly!
