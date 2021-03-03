@@ -111,7 +111,7 @@ ace.define(
 						token: [tkBrace, tkCommand, tkBrace, 'string', tkBrace],
 						regex:
 							regexOpenBrace +
-							'(title|t|subtitle|st|artist|album|key|k)' +
+							'(album|arranger|artist|capo|composer|copyright|duration|key|lyricist|tempo|time|title|t|subtitle|st|year)' +
 							regexColon +
 							'(.*)' +
 							regexCloseBrace,
@@ -192,7 +192,7 @@ ace.define(
 					},
 					{
 						token: 'string',
-						regex: '[a-gA-G][b#]?',
+						regex: '[A-G][b#]?',
 					},
 					{
 						token: 'constant.mumeric',
