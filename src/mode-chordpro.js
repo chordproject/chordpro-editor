@@ -9,6 +9,7 @@ ace.define(
     "ace/lib/oop",
     "ace/mode/text",
     "ace/mode/chordpro_highlight_rules",
+    "ace/mode/folding/chordpro",
   ],
   function (require, exports, module) {
     var oop = require("ace/lib/oop");
@@ -17,10 +18,13 @@ ace.define(
     // defines the language specific highlighters rules
     var ChordproHighlightRules = require("./chordpro_highlight_rules")
       .ChordproHighlightRules;
+    var FoldMode = require("./folding/chordpro").FoldMode;
+    var ChordproFolding = new FoldMode();
 
     var Mode = function () {
       // set everything up
       this.HighlightRules = ChordproHighlightRules;
+      this.foldingRules = ChordproFolding;
     };
 
     oop.inherits(Mode, TextMode);
@@ -239,7 +243,71 @@ ace.define(
     };
 
     oop.inherits(ChordproHighlightRules, TextHighlightRules);
-
     exports.ChordproHighlightRules = ChordproHighlightRules;
+  }
+);
+
+ace.define(
+  "ace/mode/folding/chordpro",
+  [
+    "require",
+    "exports",
+    "module",
+    "ace/lib/oop",
+    "ace/range",
+    "ace/mode/folding/fold_mode",
+  ],
+  function (require, exports, module) {
+    "use strict";
+
+    var oop = require("ace/lib/oop");
+    var Range = require("ace/range").Range;
+    var BaseFoldMode = require("./fold_mode").FoldMode;
+
+    var FoldMode = (exports.FoldMode = function () {});
+    oop.inherits(FoldMode, BaseFoldMode);
+
+    (function () {
+      // regular expressions that identify starting and stopping points
+      this.foldingStartMarker = /\{(so(?<name>v|b|c|t)|start_of_(?<longname>[^\s^:.]+?))(: [^\s.]+)?\}/;
+      this.foldingStopMarker = /\{(eo(?<name>v|b|c|t)|end_of_(?<longname>[^\s^:.]+?))}/;
+
+      this.getFoldWidgetRange = function (session, foldStyle, row) {
+        var line = session.getLine(row);
+
+        var match = line.match(this.foldingStartMarker);
+        if (match) {
+          const shortname = match.groups["name"];
+          const longname = match.groups["longname"];
+          if(!shortname && !longname){
+            return;
+          }
+          let name = shortname? shortname:longname;
+          return this.getRegionBlock(session, line, row, name);
+        }
+        return range;
+      };
+      this.getRegionBlock = function (session, line, row, name) {
+        var startColumn = line.search(/\s*$/);
+        var maxRow = session.getLength();
+        var startRow = row;
+        let hasMatch = false;
+
+        while (++row < maxRow) {
+          line = session.getLine(row);
+          var m = this.foldingStopMarker.exec(line);
+          if (!m) continue;
+          else if (m.groups["name"] === name || m.groups["longname"] === name){
+            hasMatch = true;
+            break;
+          }
+        }
+
+        var endRow = row;
+        if (endRow > startRow && hasMatch) {
+          return new Range(startRow, startColumn, endRow, line.length);
+        }
+      };
+    }.call(FoldMode.prototype));
   }
 );
