@@ -115,7 +115,7 @@ ace.define(
             token: [tkBrace, tkSingleTag, tkBrace, tkText, tkBrace],
             regex:
               regexOpenBrace +
-              /(start_of_tab|sot)/ +
+              "(start_of_tab|sot)" +
               regexColon +
               regexAnything +
               regexCloseBrace,
@@ -132,7 +132,7 @@ ace.define(
             token: [tkBrace, tkCommand, tkBrace, tkText, tkBrace],
             regex:
               regexOpenBrace +
-              /(c|comment)/ +
+              "(c|comment)" +
               regexColon +
               regexAnything +
               regexCloseBrace,
@@ -169,10 +169,11 @@ ace.define(
           },
           {
             token: [tkCharEscape, tkKeyword, tkCharEscape],
-            regex: regexOpenBracket + "(\\*.+|(?:[A-G].*?))" + regexCloseBracket,
-			caseInsensitive:true,
+            regex:
+              regexOpenBracket + "(\\*.+|(?:[A-G].*?))" + regexCloseBracket,
+            caseInsensitive: true,
           },
-		  {
+          {
             token: [tkCharEscape, tkInvalid, tkCharEscape],
             regex: regexOpenBracket + regexAnything + regexCloseBracket,
           },
