@@ -65,7 +65,8 @@ ace.define(
         regexOpenBracket = "(\\[)",
         regexCloseBracket = "(\\])",
         regexColon = "(\\s*:)",
-        regexAnything = "(.+?)";
+        regexAnything = "(.+?)",
+        regexWord = "(\\s*[\\w\\-_]+\\s*)";
 
       // stand alone
       var regexNumber = "\\b[0-9]+\\b";
@@ -91,7 +92,7 @@ ace.define(
             token: tkComment,
             regex: "/^#.*$/", // debated this, for now MUST be first character (otherwise allow \\s*)
           },
-          {
+          { // start of block, column break and new page
             token: [tkBrace, tkSingleTag, tkBrace],
             regex:
               regexOpenBrace +
@@ -99,7 +100,7 @@ ace.define(
               regexCloseBrace,
             caseInsensitive: true,
           },
-          {
+          { // start of block with label
             token: [tkBrace, tkCommand, tkBrace, tkString, tkBrace],
             regex:
               regexOpenBrace +
@@ -109,13 +110,13 @@ ace.define(
               regexCloseBrace,
             caseInsensitive: true,
           },
-          {
+          { // start of tab block
             token: [tkBrace, tkSingleTag, tkBrace],
             regex: regexOpenBrace + "(start_of_tab|sot)" + regexCloseBrace,
             caseInsensitive: true,
             next: "tabBlockTag",
           },
-          {
+          { // start of tab block with label
             token: [tkBrace, tkSingleTag, tkBrace, tkText, tkBrace],
             regex:
               regexOpenBrace +
@@ -126,13 +127,13 @@ ace.define(
             caseInsensitive: true,
             next: "tabBlockTag",
           },
-          {
+          { // define tag
             token: [tkBrace, tkCommand, tkBrace],
-            regex: regexOpenBrace + /(define)/ + regexColon,
+            regex: regexOpenBrace + "(define)" + regexColon,
             caseInsensitive: true,
             next: "defineTag",
           },
-          {
+          { // comment tag
             token: [tkBrace, tkCommand, tkBrace, tkText, tkBrace],
             regex:
               regexOpenBrace +
@@ -142,7 +143,7 @@ ace.define(
               regexCloseBrace,
             caseInsensitive: true,
           },
-          {
+          { // known meta tag
             token: [tkBrace, tkCommand, tkBrace, tkString, tkBrace],
             regex:
               regexOpenBrace +
@@ -152,7 +153,36 @@ ace.define(
               regexCloseBrace,
             caseInsensitive: true,
           },
-          {
+          { // custom extensions
+            token: [tkBrace, tkCommand, tkBrace],
+            regex:
+              regexOpenBrace +
+              "(x_[aA-zZ0-9_]+)" +
+              regexCloseBrace,
+            caseInsensitive: true,
+          },
+          { // custom extensions with value
+            token: [tkBrace, tkCommand, tkBrace, tkString, tkBrace],
+            regex:
+              regexOpenBrace +
+              "(x_[aA-zZ0-9_]+)" +
+              regexColon +
+              regexAnything +
+              regexCloseBrace,
+            caseInsensitive: true,
+          },
+          { // custom meta tag
+            token: [tkBrace, tkCommand, tkBrace, tkKeyword, tkString, tkBrace],
+            regex:
+              regexOpenBrace +
+              "(meta)" +
+              regexColon +
+              regexWord +
+              regexAnything +
+              regexCloseBrace,
+            caseInsensitive: true,
+          },
+          { // invalid meta tag with value
             token: [tkBrace, tkInvalid, tkBrace, tkString, tkBrace],
             regex:
               regexOpenBrace +
@@ -162,31 +192,31 @@ ace.define(
               regexCloseBrace,
             caseInsensitive: true,
           },
-          {
+          { // invalid meta tag
             token: [tkBrace, tkInvalid, tkBrace],
             regex: regexOpenBrace + regexAnything + regexCloseBrace,
             caseInsensitive: true,
           },
-          {
+          { // numeric value
             token: tkNumeric,
             regex: regexNumber,
           },
-          {
+          { // chords
             token: [tkCharEscape, tkKeyword, tkCharEscape],
             regex:
               regexOpenBracket + "(\\*.+|(?:[A-G].*?))" + regexCloseBracket,
             caseInsensitive: true,
           },
-          {
+          { // invalid chords
             token: [tkCharEscape, tkInvalid, tkCharEscape],
             regex: regexOpenBracket + regexAnything + regexCloseBracket,
           },
-          {
+          { // spaces
             token: tkText,
             regex: "\\s+",
           },
         ],
-
+        // define tag
         defineTag: [
           {
             token: tkBrace,
@@ -199,12 +229,7 @@ ace.define(
           },
           {
             token: "keyword.control",
-            regex: "\\b(fingers|frets|finger|fret|string)\\b",
-            caseInsensitive: true,
-          },
-          {
-            token: [tkCommand, tkBrace],
-            regex: "\\b(add)" + regexColon,
+            regex: "\\b(fingers|frets|base-fret)\\b",
             caseInsensitive: true,
           },
           {
@@ -212,6 +237,7 @@ ace.define(
           },
         ],
 
+        // tabs block
         tabBlockTag: [
           {
             token: [tkBrace, tkSingleTag, tkBrace],
@@ -279,10 +305,10 @@ ace.define(
         if (match) {
           const shortname = match.groups["name"];
           const longname = match.groups["longname"];
-          if(!shortname && !longname){
+          if (!shortname && !longname) {
             return;
           }
-          let name = shortname? shortname:longname;
+          let name = shortname ? shortname : longname;
           return this.getRegionBlock(session, line, row, name);
         }
         return range;
@@ -297,7 +323,7 @@ ace.define(
           line = session.getLine(row);
           var m = this.foldingStopMarker.exec(line);
           if (!m) continue;
-          else if (m.groups["name"] === name || m.groups["longname"] === name){
+          else if (m.groups["name"] === name || m.groups["longname"] === name) {
             hasMatch = true;
             break;
           }

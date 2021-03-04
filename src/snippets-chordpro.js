@@ -67,6 +67,10 @@ ace.define('ace/snippets/chordpro', ['require', 'exports', 'module'], function (
         'snippet year',
         '	{year: ${1:2020}}',
 
+        // meta tag
+        'snippet meta',
+        '	{meta: ${1:label} ${2:value}}',
+
         // comment tag
         'snippet c',
         '	{comment: ${1:description}}',
@@ -120,7 +124,9 @@ ace.define('ace/snippets/chordpro', ['require', 'exports', 'module'], function (
 
         // define tag
         'snippet d',
-        '	{define: ${1:name} base-fret:${2:1} frets ${3:0 0 0 0 0 0} fingers ${4:0 0 0 0 0 0}}',
+        '	{define: ${1:Am} base-fret ${2:1} frets ${3:0 0 0 0 0 0} fingers ${4:0 0 0 0 0 0}}',
+        'snippet define',
+        '	{define: ${1:Am} base-fret ${2:1} frets ${3:0 0 0 0 0 0} fingers ${4:0 0 0 0 0 0}}',
 
         // single-liners
         'snippet cb',
