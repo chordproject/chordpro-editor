@@ -73,8 +73,6 @@ ace.define('ace/snippets/chordpro', ['require', 'exports', 'module'], function (
         'snippet comment',
         '	{comment: ${1:description}}',
 
-
-
         // chorus block
         'snippet soc',
         '	{start_of_chorus}',
@@ -112,9 +110,9 @@ ace.define('ace/snippets/chordpro', ['require', 'exports', 'module'], function (
         '	{end_of_tab}',
         'snippet tab',
         '	{start_of_tab}',
-        '	e|----------------------------------|',
+        '	e|-${1:-}---------------------------------|',
         '	B|----------------------------------|',
-        '	G|-${1:-}--------------------------------|',
+        '	G|---------------------------------|',
         '	D|----------------------------------|',
         '	A|----------------------------------|',
         '	E|----------------------------------|',
@@ -122,20 +120,18 @@ ace.define('ace/snippets/chordpro', ['require', 'exports', 'module'], function (
 
         // define tag
         'snippet d',
-        '	{define: ${1:name} frets ${2:G_fretNum} ${3:C_fretNum} ${4:E_fretNum} ${5:A_fretNum} fingers ${6:fingerNum} ${7:fingerNum} ${8:fingerNum} ${9:fingerNum}}',
+        '	{define: ${1:name} base-fret:${2:1} frets ${3:0 0 0 0 0 0} fingers ${4:0 0 0 0 0 0}}',
 
         // single-liners
-        'snippet col',
+        'snippet cb',
         '	{column_break}',
         'snippet column',
-        '	{column_break}',
-        'snippet colb',
         '	{column_break}',
 
         // that's all folks!
         // chord usage
         'snippet [',
-        '	[${1:Chord}]',
+        '	[${1:Am}]',
 
     ].join("\n");
 
