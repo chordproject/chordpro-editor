@@ -5,17 +5,17 @@ ace.define('ace/snippets/chordpro', ['require', 'exports', 'module'], function (
     exports.snippetText = [
         // album tag
         'snippet album',
-        '	{album: ${1:title}}',
+        '	{album: ${1:value}}',
 
         // arranger tag
         'snippet arranger',
-        '	{arranger: ${1:name}}',
+        '	{arranger: ${1:value}}',
 
         // artist tag
         'snippet a',
-        '	{artist: ${1:name}}',
+        '	{artist: ${1:value}}',
         'snippet artist',
-        '	{artist: ${1:name}}',
+        '	{artist: ${1:value}}',
 
         // capo tag
         'snippet capo',
@@ -23,11 +23,11 @@ ace.define('ace/snippets/chordpro', ['require', 'exports', 'module'], function (
 
         // composer tag
         'snippet composer',
-        '	{composer: ${1:name}}',
+        '	{composer: ${1:value}}',
 
         // copyright tag
         'snippet copyright',
-        '	{copyright: ${1:copryight}}',
+        '	{copyright: ${1:value}}',
 
         // duration tag
         'snippet duration',
@@ -41,7 +41,7 @@ ace.define('ace/snippets/chordpro', ['require', 'exports', 'module'], function (
 
         // lyricist tag
         'snippet lyricist',
-        '	{lyricist: ${1:name}}',
+        '	{lyricist: ${1:value}}',
 
         // tempo tag
         'snippet tempo',
@@ -53,15 +53,15 @@ ace.define('ace/snippets/chordpro', ['require', 'exports', 'module'], function (
 
         // title tag
         'snippet t',
-        '	{title: ${1:title}}',
+        '	{title: ${1:value}}',
         'snippet title',
-        '	{title: ${1:title}}',
+        '	{title: ${1:value}}',
 
         // subtitle tag
         'snippet st',
-        '	{subtitle: ${1:name}}',
+        '	{subtitle: ${1:value}}',
         'snippet subtitle',
-        '	{subtitle: ${1:name}}',
+        '	{subtitle: ${1:value}}',
 
         // year tag
         'snippet year',
@@ -73,9 +73,9 @@ ace.define('ace/snippets/chordpro', ['require', 'exports', 'module'], function (
 
         // comment tag
         'snippet c',
-        '	{comment: ${1:description}}',
+        '	{comment: ${1:value}}',
         'snippet comment',
-        '	{comment: ${1:description}}',
+        '	{comment: ${1:value}}',
 
         // chorus block
         'snippet soc',
@@ -139,8 +139,18 @@ ace.define('ace/snippets/chordpro', ['require', 'exports', 'module'], function (
         'snippet [',
         '	[${1:Am}]',
 
+        'snippet !',
+        '	{title:${1:title}}',
+        '	{artist:${2:artist}}',
+        '	{duration:${3:04:00}}',
+        '	{key:${4:C}}',
+        '	',
+        '	${5:lyrics}',
+        '	{start_of_chorus}',
+        '	${6:lyrics}',
+        '	{end_of_chorus}',
+
     ].join("\n");
 
     exports.scope = "chordpro";
-
 });
