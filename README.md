@@ -4,16 +4,17 @@ A JavaScript frontend library for editing ChordPro songs.
 
 Inspired by: https://github.com/buzcarter/UkeGeeks with the following changes:
 
-- Chord autocomplete everywhere (without prefix)
-- Use 'Ace' as a Node dependence (It allows use the latest version)
 - Upgraded to ES6
+- Use 'Ace' as a Node dependence (It allows use the latest version)
 - Use webpack (bundle and minify) to optimize performance (Mode Production)
 - Use webpack to allow debug (Mode Development)
+- Chord autocomplete everywhere (without prefix)
+- Add missing directives and snippets
 
 ## Overview
 
 Reads marked-up music (lyrics + chords) extracting all of the chords used.
-Generates chord diagrams using HTML5 &lt;canvas&gt; and rewrites the music with standard HTML wrapping the chords.
+Use Ace editor with a custom mode for Chordpro song texts.
 
 #### Part of [ChordProject](https://gochord.com/)
 
@@ -42,10 +43,7 @@ $ npm run start
 
 Open a browser and navigate to http://localhost:8080/ to load a song example.
 
-4.  Make changes (e.g. Change the options in src/main.js)
-5.  Changes are deployed on browser directly!
-
-If you want a new version: Bundle files with webpack (the output will be in dist folder):
+4.  If you want a new version: Bundle files with webpack (the output will be in dist folder):
 
 ```sh
 $ npm run build
@@ -85,7 +83,3 @@ Essentially, it looks like this:
     [G]Sing [Bbsus2]praise
     {end_of_chorus}
 ```
-
-## Contribute
-
-Contributions are welcome!

@@ -1,6 +1,6 @@
 {
 	"name": "chordproject-editor",
-	"version": "0.1.2",
+	"version": "0.1.4",
 	"main": "dist/chordproject-editor.bundle.js",
 	"description": "A JavaScript library for editing ChordPro songs.",
 	"engines": {
