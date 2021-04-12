@@ -14,6 +14,7 @@ ace.define(
 		'ace/clipboard',
 		'ace/lib/dom',
 		'ace/editor',
+		'ace/ext/searchbox',
 	],
 	function (require, exports, module) {
 		'use strict';

@@ -1,6 +1,6 @@
 {
 	"name": "chordproject-editor",
-	"version": "0.1.6",
+	"version": "0.1.7",
 	"main": "dist/chordproject-editor.bundle.js",
 	"description": "A JavaScript library for editing ChordPro songs.",
 	"engines": {
@@ -17,7 +17,7 @@
 	"scripts": {
 		"start": "webpack serve --config webpack.dev.js",
 		"build": "webpack --config webpack.prod.js",
-		"publish": "npm build && npm publish"
+		"release": "npm run build && npm publish"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.12.10",
