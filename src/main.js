@@ -5,7 +5,7 @@ import './snippets-chordpro';
 import './theme-cobalt';
 import './theme-clouds';
 import 'ace-builds/src-min-noconflict/ext-searchbox';
-import 'ace-builds/src-noconflict/snippets/text';
+import 'ace-builds/src-min-noconflict/snippets/text';
 //import * as defaultTheme from 'ace-builds/src-noconflict/theme-textmate';
 import * as langTools from './ext-language_tools';
 
