@@ -93,7 +93,7 @@ ace.define(
             regex: "/^#.*$/", // debated this, for now MUST be first character (otherwise allow \\s*)
           },
           { // start of block, column break and new page
-            token: [tkBrace, tkSingleTag, tkBrace],
+            token: [tkBrace, tkCommand, tkBrace],
             regex:
               regexOpenBrace +
               "(column_break|cb|new_page|np|start_of_(?:[a-z]+)|so(?:c|v|b)|end_of_(?:[a-z]+)|eo(?:c|v|b))" +
@@ -111,13 +111,13 @@ ace.define(
             caseInsensitive: true,
           },
           { // start of tab block
-            token: [tkBrace, tkSingleTag, tkBrace],
+            token: [tkBrace, tkCommand, tkBrace],
             regex: regexOpenBrace + "(start_of_tab|sot)" + regexCloseBrace,
             caseInsensitive: true,
             next: "tabBlockTag",
           },
           { // start of tab block with label
-            token: [tkBrace, tkSingleTag, tkBrace, tkText, tkBrace],
+            token: [tkBrace, tkCommand, tkBrace, tkText, tkBrace],
             regex:
               regexOpenBrace +
               "(start_of_tab|sot)" +
@@ -240,7 +240,7 @@ ace.define(
         // tabs block
         tabBlockTag: [
           {
-            token: [tkBrace, tkSingleTag, tkBrace],
+            token: [tkBrace, tkCommand, tkBrace],
             regex: regexOpenBrace + "(end_of_tab|eot)" + regexCloseBrace,
             caseInsensitive: true,
             next: "start",
@@ -295,7 +295,7 @@ ace.define(
 
     (function () {
       // regular expressions that identify starting and stopping points
-      this.foldingStartMarker = /\{(so(?<name>v|b|c|t)|start_of_(?<longname>[^\s^:.]+?))(: [^\s.]+)?\}/;
+      this.foldingStartMarker = /\{(so(?<name>v|b|c|t)|start_of_(?<longname>[^\s^:.]+?))(: .+)?\}/;
       this.foldingStopMarker = /\{(eo(?<name>v|b|c|t)|end_of_(?<longname>[^\s^:.]+?))}/;
 
       this.getFoldWidgetRange = function (session, foldStyle, row) {
