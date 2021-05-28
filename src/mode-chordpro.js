@@ -204,7 +204,7 @@ ace.define(
           { // chords
             token: [tkCharEscape, tkKeyword, tkCharEscape],
             regex:
-              regexOpenBracket + "(\\*.+|(?:[A-G].*?))" + regexCloseBracket,
+              regexOpenBracket + "(\\*.+?|(?:[A-G].*?))" + regexCloseBracket,
             caseInsensitive: true,
           },
           { // invalid chords
