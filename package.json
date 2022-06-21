@@ -1,7 +1,10 @@
 {
 	"name": "chordproject-editor",
-	"version": "0.1.9",
+	"version": "0.1.11",
 	"main": "dist/chordproject-editor.bundle.js",
+	"files": [
+		"dist"
+	],
 	"description": "A JavaScript library for editing ChordPro songs.",
 	"engines": {
 		"node": ">=4.2.4"
@@ -13,7 +16,11 @@
 		"chord",
 		"guitar"
 	],
-	"author": "Jaime Mora (http://chordproject.com)",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/chordproject/chordpro-editor"
+	},
+	"author": "ChordProject (http://chordproject.com)",
 	"scripts": {
 		"start": "webpack serve --config webpack.dev.js",
 		"build": "webpack --config webpack.prod.js",
