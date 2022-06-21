@@ -31,19 +31,7 @@ From the [G]rising of the sun
 All the [G]nations of the earth
 All the [Dm7] Angels and the [F]Saints
 [G]Sing [Bbsus2]praise
-{end_of_chorus}
-    
-    `.substring(1);
-
-// ChordProjectEditor.Main.init();
-// ChordProjectEditor.Main.run(chordSheet);
+{end_of_chorus}`.substring(1);
 
 Main.init();
 Main.run(chordSheet);
-
-// var _editor = Main.getEditor();
-// _editor.on('change', () => updateContent());
-
-// var  updateContent = () => {
-//    //alert("update event :)");
-// };

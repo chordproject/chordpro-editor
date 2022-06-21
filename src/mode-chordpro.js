@@ -295,7 +295,7 @@ ace.define(
 
     (function () {
       // regular expressions that identify starting and stopping points
-      this.foldingStartMarker = /\{(so(?<name>v|b|c|t)|start_of_(?<longname>[^\s^:.]+?))(: [^\s.]+)?\}/;
+      this.foldingStartMarker = /\{(so(?<name>v|b|c|t)|start_of_(?<longname>[^\s^:.]+?))(: .+)?\}/;
       this.foldingStopMarker = /\{(eo(?<name>v|b|c|t)|end_of_(?<longname>[^\s^:.]+?))}/;
 
       this.getFoldWidgetRange = function (session, foldStyle, row) {
